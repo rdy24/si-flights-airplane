@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('airplane_seats', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['superadmin', 'admin', 'user'])->default('user');
-            $table->rememberToken();
+            $table->foreignId('plane_id')->constrained('planes')->onUpdate('cascade')->onDelete('cascade');
+            $table->enum('kelas_kursi', ['Ekonomi', 'Bisnis', 'First']);
+            $table->integer('kuota');
+            $table->integer('harga');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('airplane_seats');
     }
 };

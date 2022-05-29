@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('routes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['superadmin', 'admin', 'user'])->default('user');
-            $table->rememberToken();
+            $table->foreignId('airport_origin_id')->constrained('airports')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('airport_destination_id')->constrained('airports')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('kode_rute');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('routes');
     }
 };

@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('no_ktp')->unique();
+            $table->integer('no_passport')->nullable()->unique();
+            $table->string('nama');
+            $table->string('alamat');
+            $table->date('tanggal_lahir');
+            $table->string('no_telepon');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['superadmin', 'admin', 'user'])->default('user');
-            $table->rememberToken();
+            $table->string('kewarganegaraan');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('customers');
     }
 };

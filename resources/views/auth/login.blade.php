@@ -36,7 +36,13 @@
               </div>
 
               <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
+                @if ($message = Session::get('loginError'))
+                <p class="text-danger">
+                  {{ $message }}
+                </p>
+                @endif
+                <form method="POST" action="{{ route('login.authenticate') }}" class="needs-validation" novalidate="">
+                  @csrf
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
@@ -49,7 +55,7 @@
                     <div class="d-block">
                       <label for="password" class="control-label">Password</label>
                       <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
+                        <a href="#" class="text-small">
                           Forgot Password?
                         </a>
                       </div>
