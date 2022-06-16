@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('schedule_id')->constrained('schedules')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('customer_id')->constrained('customers')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('airplane_seat_id')->constrained('airplane_seats')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('kode_tiket');
             $table->date('tanggal_pesan');
             $table->enum('status', ['Belum Terpakai', 'Sudah Terpakai']);
             $table->softDeletes();

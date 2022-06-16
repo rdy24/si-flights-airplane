@@ -16,12 +16,12 @@ class Route extends Model
 
     public function airportOrigin()
     {
-        return $this->belongsTo(Airport::class, 'airport_origin_id');
+        return $this->belongsTo(Airport::class, 'airport_origin_id', 'id');
     }
 
     public function airportDestination()
     {
-        return $this->belongsTo(Airport::class, 'airport_destination_id');
+        return $this->belongsTo(Airport::class, 'airport_destination_id', 'id');
     }
 
     public function schedule()

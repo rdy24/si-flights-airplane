@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AirportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,13 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index']);
+
+    // airport
+    Route::resource('airport', AirportController::class);
+    Route::get('/print/airport', [AirportController::class, 'print'])->name('print.airport');
+    Route::get('/trash/airport', [AirportController::class, 'show_restore'])->name('trash.airport');
+    Route::get('/trash/airport/{id}', [AirportController::class, 'restore'])->name('restore.airport');
+    Route::get('/trash/airport/delete/{id}', [AirportController::class, 'delete'])->name('delete.airport');
 });
 
 

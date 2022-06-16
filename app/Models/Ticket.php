@@ -14,6 +14,21 @@ class Ticket extends Model
     public $table = 'tickets';
     protected $guarded = ['id'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+
+        self::creating(function ($model) {
+            $date = date('Y');
+            $rand = rand(0000, 9999);
+            $customer_id = request()->customer_id;
+
+            $kode = '#'. $date . $rand . $customer_id;
+            $model->kode_tiket = $kode;
+        });
+    }
+
     public function customer()
     {
         return $this->belongsTo(Customer::class);
