@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Data Bandara | {{ config('app.name') }}
+Data Jadwal | {{ config('app.name') }}
 @endsection
 
 @push('css-libraries')
@@ -11,10 +11,10 @@ Data Bandara | {{ config('app.name') }}
 
 @section('content')
 <div class="section-header">
-  <h1>Data Bandara</h1>
+  <h1>Data Jadwal</h1>
   <div class="section-header-breadcrumb">
     <div class="breadcrumb-item active"><a href="{{ route('dashboard.') }}">Dashboard</a></div>
-    <div class="breadcrumb-item">Data Bandara</div>
+    <div class="breadcrumb-item">Data Jadwal</div>
   </div>
 </div>
 
@@ -23,9 +23,9 @@ Data Bandara | {{ config('app.name') }}
     <div class="col-12">
       <div class="card">
         <div class="card-body d-flex justify-content-between">
-          <a href="{{ route('dashboard.airport.create') }}" class="btn btn-primary"><i class="fas fa-plus"
+          <a href="{{ route('dashboard.schedule.create') }}" class="btn btn-primary"><i class="fas fa-plus"
               aria-hidden="true"></i> Tambah Data</a>
-          <a href="{{ route('dashboard.print.airport') }}" class="btn btn-dark"><i class="fas fa-file-pdf"
+          <a href="{{ route('dashboard.print.schedule') }}" class=" btn btn-dark"><i class="fas fa-file-pdf"
               aria-hidden="true"></i> Cetak PDF</a>
         </div>
         <div class="card-body">
@@ -34,25 +34,29 @@ Data Bandara | {{ config('app.name') }}
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama</th>
-                  <th>Alamat</th>
-                  <th>Kota</th>
-                  <th>Negara</th>
+                  <th>Pesawat</th>
+                  <th>Kode Rute</th>
+                  <th>Waktu Berangkat</th>
+                  <th>Waktu Tiba</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                @forelse ($airports as $airport)
+                @forelse ($schedules as $schedule)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $airport->name }}</td>
-                  <td>{{ $airport->alamat }}</td>
-                  <td>{{ $airport->kota }}</td>
-                  <td>{{ $airport->negara }}</td>
+                  <td>{{ $schedule->plane->nama ?? '' }}</td>
+                  <td>{{ $schedule->route->airportOrigin->name ?? '' }} - {{
+                    $schedule->route->airportDestination->name ?? '' }} ({{ $schedule->route->kode_rute
+                    ?? '' }})</td>
+                  <td>{{ $schedule->waktu_berangkat }}</td>
+                  <td>{{ $schedule->waktu_tiba }}</td>
+                  <td>{{ $schedule->status }}</td>
                   <td>
-                    <a href="{{ route('dashboard.airport.edit', $airport->id) }}" class="btn btn-warning"><i
+                    <a href="{{ route('dashboard.schedule.edit', $schedule->id) }}" class="btn btn-warning"><i
                         class="fa fa-pen" aria-hidden="true"></i></a>
-                    <form action="{{ route('dashboard.airport.destroy', $airport->id) }}" method="POST"
+                    <form action="{{ route('dashboard.schedule.destroy', $schedule->id) }}" method="POST"
                       class="d-inline">
                       @csrf
                       @method('delete')

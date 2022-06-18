@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 Dashboard | {{ config('app.name') }}
@@ -13,7 +13,7 @@ Dashboard | {{ config('app.name') }}
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
         <div class="card-icon bg-primary">
-          <i class="far fa-user"></i>
+          <i class="fas fa-plane-arrival"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
@@ -28,7 +28,7 @@ Dashboard | {{ config('app.name') }}
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
         <div class="card-icon bg-danger">
-          <i class="far fa-newspaper"></i>
+          <i class="fas fa-route"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
@@ -43,7 +43,7 @@ Dashboard | {{ config('app.name') }}
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
         <div class="card-icon bg-warning">
-          <i class="far fa-file"></i>
+          <i class="fas fa-paper-plane"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
@@ -58,7 +58,7 @@ Dashboard | {{ config('app.name') }}
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
         <div class="card-icon bg-success">
-          <i class="fas fa-circle"></i>
+          <i class="fas fa-plane"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
@@ -72,8 +72,8 @@ Dashboard | {{ config('app.name') }}
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
-        <div class="card-icon bg-success">
-          <i class="fas fa-circle"></i>
+        <div class="card-icon bg-primary">
+          <i class="fas fa-user"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
@@ -87,7 +87,7 @@ Dashboard | {{ config('app.name') }}
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
-        <div class="card-icon bg-success">
+        <div class="card-icon bg-warning">
           <i class="fas fa-circle"></i>
         </div>
         <div class="card-wrap">
@@ -102,8 +102,8 @@ Dashboard | {{ config('app.name') }}
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
-        <div class="card-icon bg-success">
-          <i class="fas fa-circle"></i>
+        <div class="card-icon bg-info">
+          <i class="fas fa-ticket-alt"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">

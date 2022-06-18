@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <link rel="shortcut icon" href={{ asset("assets/img/stisla-fill.svg") }} type="image/x-icon">
+  <link rel="shortcut icon" href={{ asset("assets/img/logo.png") }} type="image/x-icon">
   <title>@yield('title')</title>
 
   <!-- General CSS Files -->

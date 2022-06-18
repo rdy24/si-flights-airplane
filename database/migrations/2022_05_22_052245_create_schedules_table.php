@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('plane_id')->constrained('planes')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('airport_id')->constrained('airports')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('route_id')->constrained('routes')->onUpdate('cascade')->onDelete('cascade');
             $table->dateTime('waktu_berangkat');
             $table->dateTime('waktu_tiba');
             $table->enum('status', ['Menunggu Jadwal', 'Sedang Terbang']);

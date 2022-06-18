@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Data Bandara | {{ config('app.name') }}
+Data Maskapai | {{ config('app.name') }}
 @endsection
 
 @push('css-libraries')
@@ -11,10 +11,10 @@ Data Bandara | {{ config('app.name') }}
 
 @section('content')
 <div class="section-header">
-  <h1>Data Bandara</h1>
+  <h1>Data Maskapai</h1>
   <div class="section-header-breadcrumb">
     <div class="breadcrumb-item active"><a href="{{ route('dashboard.') }}">Dashboard</a></div>
-    <div class="breadcrumb-item">Data Bandara</div>
+    <div class="breadcrumb-item">Data Maskapai</div>
   </div>
 </div>
 
@@ -23,9 +23,9 @@ Data Bandara | {{ config('app.name') }}
     <div class="col-12">
       <div class="card">
         <div class="card-body d-flex justify-content-between">
-          <a href="{{ route('dashboard.airport.create') }}" class="btn btn-primary"><i class="fas fa-plus"
+          <a href="{{ route('dashboard.airline.create') }}" class="btn btn-primary"><i class="fas fa-plus"
               aria-hidden="true"></i> Tambah Data</a>
-          <a href="{{ route('dashboard.print.airport') }}" class="btn btn-dark"><i class="fas fa-file-pdf"
+          <a href="{{ route('dashboard.print.airline') }}" class=" btn btn-dark"><i class="fas fa-file-pdf"
               aria-hidden="true"></i> Cetak PDF</a>
         </div>
         <div class="card-body">
@@ -35,24 +35,24 @@ Data Bandara | {{ config('app.name') }}
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
-                  <th>Alamat</th>
-                  <th>Kota</th>
-                  <th>Negara</th>
+                  <th>Kode Maskapai</th>
+                  <th>Logo</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                @forelse ($airports as $airport)
+                @forelse ($airlines as $airline)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $airport->name }}</td>
-                  <td>{{ $airport->alamat }}</td>
-                  <td>{{ $airport->kota }}</td>
-                  <td>{{ $airport->negara }}</td>
+                  <td>{{ $airline->nama }}</td>
+                  <td>{{ $airline->kode_maskapai }}</td>
                   <td>
-                    <a href="{{ route('dashboard.airport.edit', $airport->id) }}" class="btn btn-warning"><i
+                    <img src="{{ asset('storage/'.$airline->logo) }}" alt="logo" class="img-fluid" width="200px">
+                  </td>
+                  <td>
+                    <a href="{{ route('dashboard.airline.edit', $airline->id) }}" class="btn btn-warning"><i
                         class="fa fa-pen" aria-hidden="true"></i></a>
-                    <form action="{{ route('dashboard.airport.destroy', $airport->id) }}" method="POST"
+                    <form action="{{ route('dashboard.airline.destroy', $airline->id) }}" method="POST"
                       class="d-inline">
                       @csrf
                       @method('delete')

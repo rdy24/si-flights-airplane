@@ -16,10 +16,17 @@
           href="{{ route('dashboard.airport.index') }}" class="nav-link"><i class="fas fa-plane-arrival"></i><span> Data
             Bandara</span></a>
       </li>
-      <li class=""><a class="nav-link" href="#"><i class="fas fa-route"></i> <span>Data Rute</span></a></li>
-      <li class=""><a class="nav-link" href="#"><i class="fas fa-paper-plane"></i> <span>Data Maskapai</span></a></li>
-      <li class=""><a class="nav-link" href="#"><i class="fas fa-plane"></i> <span>Data Pesawat</span></a></li>
-      <li class=""><a class="nav-link" href="#"><i class="fas fa-calendar-alt"></i> <span>Data Jadwal</span></a></li>
+      <li class="{{ request()->routeIs('dashboard.route.*') ? 'active' : '' }}"><a class="nav-link"
+          href="{{ route('dashboard.route.index') }}"><i class="fas fa-route"></i> <span>Data Rute</span></a></li>
+      <li class="{{ request()->routeIs('dashboard.airline.*') ? 'active' : '' }}"><a class="nav-link"
+          href="{{ route('dashboard.airline.index') }}"><i class="fas fa-paper-plane"></i> <span>Data
+            Maskapai</span></a></li>
+      <li class="{{ request()->routeIs('dashboard.plane.*') ? 'active' : '' }}"><a class="nav-link"
+          href="{{ route('dashboard.plane.index') }}"><i class="fas fa-plane"></i>
+          <span>Data Pesawat</span></a></li>
+      <li class="{{ request()->routeIs('dashboard.schedule.*') ? 'active' : '' }}"><a class="nav-link"
+          href="{{ route('dashboard.schedule.index') }}"><i class="fas fa-calendar-alt"></i>
+          <span>Data Jadwal</span></a></li>
       <li class=""><a class="nav-link" href="#"><i class="fas fa-chair"></i> <span>Data Kursi Pesawat</span></a>
       </li>
       <li class="menu-header">Data Customer</li>
