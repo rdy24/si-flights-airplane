@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <th>Maskapai</th>
-      <td>{{ $plane->airline->nama }}</td>
+      <td>{{ $plane->airline->nama ?? ''}}</td>
     </tr>
     <tr>
       <th>Tanggal Pembuatan</th>

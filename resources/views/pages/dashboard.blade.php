@@ -80,7 +80,7 @@ Dashboard | {{ config('app.name') }}
             <h4>Customer</h4>
           </div>
           <div class="card-body">
-            47
+            {{ $customer }}
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@ Dashboard | {{ config('app.name') }}
             <h4>Admin</h4>
           </div>
           <div class="card-body">
-            47
+            {{ $admin }}
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@ Dashboard | {{ config('app.name') }}
             <h4>Tiket Aktif</h4>
           </div>
           <div class="card-body">
-            47
+            {{ $ticket }}
           </div>
         </div>
       </div>

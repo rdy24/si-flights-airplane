@@ -20,7 +20,7 @@
         <td>{{ $loop->iteration }}</td>
         <td>{{ $plane->kode_pesawat }}</td>
         <td>{{ $plane->nama }}</td>
-        <td>{{ $plane->airline->nama }}</td>
+        <td>{{ $plane->airline->nama ?? '' }}</td>
         <td>{{ $plane->status }}</td>
         <td>{{ $plane->kuota }}</td>
       </tr>

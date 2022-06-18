@@ -32,8 +32,14 @@
             Pesawat</span></a>
       </li>
       <li class="menu-header">Data Customer</li>
-      <li class=""><a class="nav-link" href="#"><i class="fas fa-user"></i> <span>Data Customer</span></a></li>
-      <li class=""><a class="nav-link" href="#"><i class="fas fa-ticket-alt"></i> <span>Data Ticket</span></a></li>
+      <li class="{{ request()->routeIs('dashboard.customer.*') ? 'active' : '' }}"><a
+          href="{{ route('dashboard.customer.index') }}" class="nav-link"><i class="fas fa-user"></i><span> Data
+            Customer</span></a>
+      </li>
+      <li class="{{ request()->routeIs('dashboard.ticket.*') ? 'active' : '' }}"><a
+          href="{{ route('dashboard.ticket.index') }}" class="nav-link"><i class="fas fa-ticket-alt"></i><span> Data
+            Tiket</span></a>
+      </li>
       <li class="menu-header">Data Terhapus</li>
       <li class="nav-item dropdown {{ request()->routeIs('dashboard.trash.*') ? 'active' : '' }}">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-trash"></i>
@@ -41,5 +47,20 @@
         <ul class="dropdown-menu">
           <li class="{{ request()->routeIs('dashboard.trash.airport') ? 'active' : '' }}"><a class="nav-link"
               href="{{ route('dashboard.trash.airport') }}">Data Bandara</a></li>
+          <li class="{{ request()->routeIs('dashboard.trash.route') ? 'active' : '' }}"><a class="nav-link"
+              href="{{ route('dashboard.trash.route') }}">Data Rute</a></li>
+          <li class="{{ request()->routeIs('dashboard.trash.airline') ? 'active' : '' }}"><a class="nav-link"
+              href="{{ route('dashboard.trash.airline') }}">Data Maskapai</a></li>
+          <li class="{{ request()->routeIs('dashboard.trash.plane') ? 'active' : '' }}"><a class="nav-link"
+              href="{{ route('dashboard.trash.plane') }}">Data Pesawat</a></li>
+          <li class="{{ request()->routeIs('dashboard.trash.schedule') ? 'active' : '' }}"><a class="nav-link"
+              href="{{ route('dashboard.trash.schedule') }}">Data Jadwal</a></li>
+          <li class="{{ request()->routeIs('dashboard.trash.airplane_seat') ? 'active' : '' }}"><a class="nav-link"
+              href="{{ route('dashboard.trash.airplane_seat') }}">Data Kursi Pesawat</a></li>
+          <li class="{{ request()->routeIs('dashboard.trash.customer') ? 'active' : '' }}"><a class="nav-link"
+              href="{{ route('dashboard.trash.customer') }}">Data Customer</a></li>
+          <li class="{{ request()->routeIs('dashboard.trash.ticket') ? 'active' : '' }}"><a class="nav-link"
+              href="{{ route('dashboard.trash.ticket') }}">Data Tiket</a></li>
+        </ul>
   </aside>
 </div>

@@ -8,6 +8,8 @@ use App\Http\Controllers\AirlineController;
 use App\Http\Controllers\AirplaneSeatController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,6 +76,23 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'aut
     Route::get('/trash/airplane_seat', [AirplaneSeatController::class, 'show_restore'])->name('trash.airplane_seat');
     Route::get('/trash/airplane_seat/restore/{id}', [AirplaneSeatController::class, 'restore'])->name('restore.airplane_seat');
     Route::get('/trash/airplane_seat/delete/{id}', [AirplaneSeatController::class, 'delete'])->name('delete.airplane_seat');
+
+    // customer
+    Route::resource('customer', CustomerController::class);
+    Route::get('/print/customer', [CustomerController::class, 'print'])->name('print.customer');
+    Route::get('/print/detail-customer/{customer}', [CustomerController::class, 'print_detail'])->name('print_detail.customer');
+    Route::get('/trash/customer', [CustomerController::class, 'show_restore'])->name('trash.customer');
+    Route::get('/trash/customer/restore/{id}', [CustomerController::class, 'restore'])->name('restore.customer');
+    Route::get('/trash/customer/delete/{id}', [CustomerController::class, 'delete'])->name('delete.customer');
+
+
+    // ticket
+    Route::resource('ticket', TicketController::class);
+    Route::get('/print/ticket', [TicketController::class, 'print'])->name('print.ticket');
+    Route::get('/print/detail-ticket/{ticket}', [TicketController::class, 'print_detail'])->name('print_detail.ticket');
+    Route::get('/trash/ticket', [TicketController::class, 'show_restore'])->name('trash.ticket');
+    Route::get('/trash/ticket/restore/{id}', [TicketController::class, 'restore'])->name('restore.ticket');
+    Route::get('/trash/ticket/delete/{id}', [TicketController::class, 'delete'])->name('delete.ticket');
 });
 
 
