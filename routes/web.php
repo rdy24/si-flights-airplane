@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\AirlineController;
+use App\Http\Controllers\AirplaneSeatController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +67,13 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'aut
     Route::get('/trash/schedule', [ScheduleController::class, 'show_restore'])->name('trash.schedule');
     Route::get('/trash/schedule/restore/{id}', [ScheduleController::class, 'restore'])->name('restore.schedule');
     Route::get('/trash/schedule/delete/{id}', [ScheduleController::class, 'delete'])->name('delete.schedule');
+
+    // airplane seat
+    Route::resource('airplane_seat', AirplaneSeatController::class);
+    Route::get('/print/airplane_seat', [AirplaneSeatController::class, 'print'])->name('print.airplane_seat');
+    Route::get('/trash/airplane_seat', [AirplaneSeatController::class, 'show_restore'])->name('trash.airplane_seat');
+    Route::get('/trash/airplane_seat/restore/{id}', [AirplaneSeatController::class, 'restore'])->name('restore.airplane_seat');
+    Route::get('/trash/airplane_seat/delete/{id}', [AirplaneSeatController::class, 'delete'])->name('delete.airplane_seat');
 });
 
 

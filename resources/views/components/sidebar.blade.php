@@ -27,7 +27,9 @@
       <li class="{{ request()->routeIs('dashboard.schedule.*') ? 'active' : '' }}"><a class="nav-link"
           href="{{ route('dashboard.schedule.index') }}"><i class="fas fa-calendar-alt"></i>
           <span>Data Jadwal</span></a></li>
-      <li class=""><a class="nav-link" href="#"><i class="fas fa-chair"></i> <span>Data Kursi Pesawat</span></a>
+      <li class="{{ request()->routeIs('dashboard.airplane_seat.*') ? 'active' : '' }}"><a class="nav-link"
+          href="{{ route('dashboard.airplane_seat.index') }}"><i class="fas fa-chair"></i> <span>Data Kursi
+            Pesawat</span></a>
       </li>
       <li class="menu-header">Data Customer</li>
       <li class=""><a class="nav-link" href="#"><i class="fas fa-user"></i> <span>Data Customer</span></a></li>

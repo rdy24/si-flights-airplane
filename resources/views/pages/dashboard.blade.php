@@ -20,7 +20,7 @@ Dashboard | {{ config('app.name') }}
             <h4>Bandara</h4>
           </div>
           <div class="card-body">
-            10
+            {{ $airport }}
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@ Dashboard | {{ config('app.name') }}
             <h4>Rute</h4>
           </div>
           <div class="card-body">
-            42
+            {{ $route }}
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ Dashboard | {{ config('app.name') }}
             <h4>Maskapai</h4>
           </div>
           <div class="card-body">
-            1,201
+            {{ $airline }}
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ Dashboard | {{ config('app.name') }}
             <h4>Pesawat</h4>
           </div>
           <div class="card-body">
-            47
+            {{ $plane }}
           </div>
         </div>
       </div>
