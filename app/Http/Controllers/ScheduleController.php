@@ -11,10 +11,7 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
     
     /**
      * Display a listing of the resource.
@@ -112,14 +109,14 @@ class ScheduleController extends Controller
     {   
         $schedule = Schedule::onlyTrashed()->where('id',$id);
         $schedule->restore();
-        return redirect()->route('dashboard.trash.schedule')->with('success', 'Data Rute Berhasil Dikembalikan');
+        return redirect()->route('dashboard.trash.schedule')->with('success', 'Data Jadwal Berhasil Dikembalikan');
     }
 
     public function delete($id)
     {   
         $schedule = Schedule::onlyTrashed()->where('id',$id);
         $schedule->forceDelete();
-        return redirect()->route('dashboard.trash.route')->with('success', 'Data Rute Dihapus Permanen');
+        return redirect()->route('dashboard.trash.schedule')->with('success', 'Data Jadwal Dihapus Permanen');
     }
 
     public function print()

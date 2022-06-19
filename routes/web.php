@@ -10,6 +10,7 @@ use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,8 @@ Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('g
 Route::post('/', [LoginController::class, 'authenticate'])->name('login.authenticate')->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => ['admin', 'superadmin']], function () {
+
     Route::get('/', [DashboardController::class, 'index']);
 
     // airport
@@ -95,4 +97,15 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'aut
     Route::get('/trash/ticket/delete/{id}', [TicketController::class, 'delete'])->name('delete.ticket');
 });
 
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'superadmin'], function () {
+    Route::resource('user', UserController::class);
+    Route::get('/print/user', [UserController::class, 'print'])->name('print.user');
+    Route::get('/trash/user', [UserController::class, 'show_restore'])->name('trash.user');
+    Route::get('/trash/user/restore/{id}', [UserController::class, 'restore'])->name('restore.user');
+    Route::get('/trash/user/delete/{id}', [UserController::class, 'delete'])->name('delete.user');
+});
+
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'auth'], function () {
+    Route::get('/', [DashboardController::class, 'index']);
+});
 
