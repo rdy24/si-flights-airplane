@@ -11,7 +11,7 @@
       <li class="{{ request()->routeIs('dashboard.') ? 'active' : '' }}"><a href="/dashboard" class="nav-link"><i
             class="fas fa-fire"></i><span>Dashboard</span></a>
       </li>
-      @can('admin', 'superadmin')
+      @cannot('user')
       <li class="menu-header">Data Master</li>
       <li class="{{ request()->routeIs('dashboard.airport.*') ? 'active' : '' }}"><a
           href="{{ route('dashboard.airport.index') }}" class="nav-link"><i class="fas fa-plane-arrival"></i><span> Data
@@ -41,7 +41,7 @@
           href="{{ route('dashboard.ticket.index') }}" class="nav-link"><i class="fas fa-ticket-alt"></i><span> Data
             Tiket</span></a>
       </li>
-      @endcan
+      @endcannot
       @can('superadmin')
       <li class="menu-header">Administrator</li>
       <li class="{{ request()->routeIs('dashboard.user.*') ? 'active' : '' }}"><a
@@ -49,7 +49,7 @@
             User</span></a>
       </li>
       @endcan
-      @can('admin', 'superadmin')
+      @cannot('user')
       <li class="menu-header">Data Terhapus</li>
       <li class="nav-item dropdown {{ request()->routeIs('dashboard.trash.*') ? 'active' : '' }}">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-trash"></i>
@@ -76,7 +76,7 @@
               href="{{ route('dashboard.trash.user') }}">Data User</a></li>
           @endcan
       </li>
-      @endcan
+      @endcannot
     </ul>
   </aside>
 </div>

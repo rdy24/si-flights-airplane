@@ -44,12 +44,10 @@ Trashed Maskapai | {{ config('app.name') }}
                     <img src="{{ asset('storage/'.$airline->logo) }}" alt="logo" class="img-fluid" width="200px">
                   </td>
                   <td>
-                    <a href="{{ route('dashboard.restore.airline', $airline->id) }}" class="btn btn-success"
-                      onclick="return confirm('apakah anda yakin mengembalikan data ini?')"><i
-                        class="fa fa-trash-restore" aria-hidden="true"></i></a>
-                    <a href="{{ route('dashboard.delete.airline', $airline->id) }}" class="btn btn-danger"
-                      onclick="return confirm('apakah anda yakin ingin menghapus permanen?')"><i class="fa fa-trash"
-                        aria-hidden="true"></i></a>
+                    <a href="{{ route('dashboard.restore.airline', $airline->id) }}"
+                      class="btn btn-success btn-restore"><i class="fa fa-trash-restore" aria-hidden="true"></i></a>
+                    <a href="{{ route('dashboard.delete.airline', $airline->id) }}" class="btn btn-danger btn-delete"><i
+                        class="fa fa-trash" aria-hidden="true"></i></a>
                   </td>
                 </tr>
                 @empty
@@ -71,8 +69,42 @@ Trashed Maskapai | {{ config('app.name') }}
 <script src={{ asset("assets/module/datatables/media/js/jquery.dataTables.min.js") }}></script>
 <script src={{ asset("assets/module/datatables.net-bs4/js/dataTables.bootstrap4.min.js") }}></script>
 <script src={{ asset("assets/module/datatables.net-select-bs4/js/select.bootstrap4.min.js") }}></script>
+<script src={{ asset("assets/module/sweetalert/dist/sweetalert.min.js") }}></script>
 @endpush
 
 @push('js-page')
 <script src={{ asset("assets/js/page/modules-datatables.js") }}></script>
+@endpush
+
+@push('alert-js')
+<script>
+  $('.btn-restore').on('click', function (e) {
+    e.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+      title: 'Are you sure?',
+      text: 'Data akan kembali ke daftar maskapai',
+      icon: 'warning',
+      buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+      if (value) {
+        window.location.href = url;
+      }
+    });
+  });
+  $('.btn-delete').on('click', function (e) {
+    e.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+      title: 'Are you sure?',
+      text: 'Data akan dihapus permanen',
+      icon: 'warning',
+      buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+      if (value) {
+        window.location.href = url;
+      }
+    });
+  });
+</script>
 @endpush

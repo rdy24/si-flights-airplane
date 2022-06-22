@@ -109,14 +109,14 @@ class ScheduleController extends Controller
     {   
         $schedule = Schedule::onlyTrashed()->where('id',$id);
         $schedule->restore();
-        return redirect()->route('dashboard.trash.schedule')->with('success', 'Data Jadwal Berhasil Dikembalikan');
+        return redirect()->route('dashboard.trash.schedule')->with('success', 'Data Berhasil Dikembalikan');
     }
 
     public function delete($id)
     {   
         $schedule = Schedule::onlyTrashed()->where('id',$id);
         $schedule->forceDelete();
-        return redirect()->route('dashboard.trash.schedule')->with('success', 'Data Jadwal Dihapus Permanen');
+        return redirect()->route('dashboard.trash.schedule')->with('success', 'Data Berhasil Dihapus Permanen');
     }
 
     public function print()

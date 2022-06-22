@@ -55,7 +55,7 @@ class TicketController extends Controller
 
         Ticket::create($data);
 
-        return redirect()->route('dashboard.ticket.index')->with('success', 'Data Tiket Berhasil Ditambahkan');
+        return redirect()->route('dashboard.ticket.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -104,7 +104,7 @@ class TicketController extends Controller
 
         $ticket->update($data);
 
-        return redirect()->route('dashboard.ticket.index')->with('success', 'Data Tiket Berhasil Diubah');
+        return redirect()->route('dashboard.ticket.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -117,7 +117,7 @@ class TicketController extends Controller
     {
         $ticket->delete();
 
-        return redirect()->route('dashboard.ticket.index')->with('success', 'Data Tiket Berhasil Dihapus');
+        return redirect()->route('dashboard.ticket.index')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function show_restore()

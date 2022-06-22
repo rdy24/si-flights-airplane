@@ -40,7 +40,7 @@ class AirportController extends Controller
     {
         $data = $request->all();
         Airport::create($data);
-        return redirect()->route('dashboard.airport.index')->with('success', 'Data Bandara Berhasil Dibuat');
+        return redirect()->route('dashboard.airport.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -76,7 +76,7 @@ class AirportController extends Controller
     {
         $data = $request->all();
         $airport->update($data);
-        return redirect()->route('dashboard.airport.index')->with('success', 'Data Bandara Berhasil Diubah');
+        return redirect()->route('dashboard.airport.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -88,7 +88,7 @@ class AirportController extends Controller
     public function destroy(Airport $airport)
     {
         $airport->delete();
-        return redirect()->route('dashboard.airport.index')->with('success', 'Data Bandara Berhasil Dihapus');
+        return redirect()->route('dashboard.airport.index')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function show_restore()
@@ -101,14 +101,14 @@ class AirportController extends Controller
     {   
         $airport = Airport::onlyTrashed()->where('id',$id);
         $airport->restore();
-        return redirect()->route('dashboard.trash.airport')->with('success', 'Data Bandara Berhasil Dikembalikan');
+        return redirect()->route('dashboard.trash.airport')->with('success', 'Data Berhasil Dikembalikan');
     }
 
     public function delete($id)
     {   
         $airport = Airport::onlyTrashed()->where('id',$id);
         $airport->forceDelete();
-        return redirect()->route('dashboard.trash.route')->with('success', 'Data Bandara Dihapus Permanen');
+        return redirect()->route('dashboard.trash.route')->with('success', 'Data Berhasil Dihapus Permanen');
     }
 
     public function print()

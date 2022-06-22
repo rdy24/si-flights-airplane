@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Data User | {{ config('app.name') }}
+Trashed Data User | {{ config('app.name') }}
 @endsection
 
 @push('css-libraries')
@@ -14,7 +14,7 @@ Data User | {{ config('app.name') }}
   <h1>Data User</h1>
   <div class="section-header-breadcrumb">
     <div class="breadcrumb-item active"><a href="{{ route('dashboard.') }}">Dashboard</a></div>
-    <div class="breadcrumb-item">Data User</div>
+    <div class="breadcrumb-item">Trashed Data User</div>
   </div>
 </div>
 
@@ -22,12 +22,6 @@ Data User | {{ config('app.name') }}
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div class="card-body d-flex justify-content-between">
-          <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary"><i class="fas fa-plus"
-              aria-hidden="true"></i> Tambah Data</a>
-          <a href="{{ route('dashboard.print.user') }}" class=" btn btn-dark"><i class="fas fa-file-pdf"
-              aria-hidden="true"></i> Cetak PDF</a>
-        </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-striped" id="table-1">
@@ -48,12 +42,10 @@ Data User | {{ config('app.name') }}
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->role }}</td>
                   <td>
-                    <a href="{{ route('dashboard.restore.user', $user->id) }}" class="btn btn-success"
-                      onclick="return confirm('apakah anda yakin mengembalikan data ini?')"><i
+                    <a href="{{ route('dashboard.restore.user', $user->id) }}" class="btn btn-success btn-restore"><i
                         class="fa fa-trash-restore" aria-hidden="true"></i></a>
-                    <a href="{{ route('dashboard.delete.user', $user->id) }}" class="btn btn-danger"
-                      onclick="return confirm('apakah anda yakin ingin menghapus permanen?')"><i class="fa fa-trash"
-                        aria-hidden="true"></i></a>
+                    <a href="{{ route('dashboard.delete.user', $user->id) }}" class="btn btn-danger btn-delete"><i
+                        class="fa fa-trash" aria-hidden="true"></i></a>
                   </td>
                 </tr>
                 @empty
@@ -84,22 +76,31 @@ Data User | {{ config('app.name') }}
 
 @push('alert-js')
 <script>
-  $(".btn-delete").click(function(e) {
-    var form = $(this).closest("form");
-    var name = $(this).data("name");
+  $('.btn-restore').on('click', function (e) {
     e.preventDefault();
+    const url = $(this).attr('href');
     swal({
-      title: 'Yakin ingin menghapus data?',
-      text: 'Data akan masuk ke dalam menu trash',
+      title: 'Are you sure?',
+      text: 'Data akan kembali ke daftar user',
       icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        form.submit();
-      } else {
-        swal('Proses Hapus dibatalkan');
+      buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+      if (value) {
+        window.location.href = url;
+      }
+    });
+  });
+  $('.btn-delete').on('click', function (e) {
+    e.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+      title: 'Are you sure?',
+      text: 'Data akan dihapus permanen',
+      icon: 'warning',
+      buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+      if (value) {
+        window.location.href = url;
       }
     });
   });

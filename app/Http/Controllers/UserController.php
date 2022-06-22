@@ -123,14 +123,14 @@ class UserController extends Controller
     {   
         $user = User::onlyTrashed()->where('id',$id);
         $user->restore();
-        return redirect()->route('dashboard.trash.user')->with('success', 'Data User Berhasil Dikembalikan');
+        return redirect()->route('dashboard.trash.user')->with('success', 'Data Berhasil Dikembalikan');
     }
 
     public function delete($id)
     {   
         $user = User::onlyTrashed()->where('id',$id);
         $user->forceDelete();
-        return redirect()->route('dashboard.trash.user')->with('success', 'Data User Dihapus Permanen');
+        return redirect()->route('dashboard.trash.user')->with('success', 'Data Berhasil Dihapus Permanen');
     }
 
     public function print()

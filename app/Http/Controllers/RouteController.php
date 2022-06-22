@@ -42,7 +42,7 @@ class RouteController extends Controller
     {
         $data = $request->all();
         Route::create($data);
-        return redirect()->route('dashboard.route.index')->with('success', 'Data Rute Berhasil Dibuat');
+        return redirect()->route('dashboard.route.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -85,7 +85,7 @@ class RouteController extends Controller
 
         $data = $request->all();
         $route->update($data);
-        return redirect()->route('dashboard.route.index')->with('success', 'Data Rute Berhasil Diubah');
+        return redirect()->route('dashboard.route.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -97,7 +97,7 @@ class RouteController extends Controller
     public function destroy(Route $route)
     {
         $route->delete();
-        return redirect()->route('dashboard.route.index')->with('success', 'Data Rute Berhasil Dihapus');
+        return redirect()->route('dashboard.route.index')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function show_restore()
@@ -110,14 +110,14 @@ class RouteController extends Controller
     {   
         $route = Route::onlyTrashed()->where('id',$id);
         $route->restore();
-        return redirect()->route('dashboard.trash.route')->with('success', 'Data Rute Berhasil Dikembalikan');
+        return redirect()->route('dashboard.trash.route')->with('success', 'Data Berhasil Dikembalikan');
     }
 
     public function delete($id)
     {   
         $route = Route::onlyTrashed()->where('id',$id);
         $route->forceDelete();
-        return redirect()->route('dashboard.trash.route')->with('success', 'Data Rute Dihapus Permanen');
+        return redirect()->route('dashboard.trash.route')->with('success', 'Data Berhasil Dihapus Permanen');
     }
 
     public function print()
